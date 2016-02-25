@@ -3,13 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="pokemon.ttf">
-            <string>PokemonSolidNormal</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--View Controller-->
         <scene sceneID="EHf-IW-A2E">
@@ -29,25 +23,13 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro0" translatesAutoresizingMaskIntoConstraints="NO" id="0DE-cl-QeK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PokeDeck" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D1D-VI-Jai">
-                                <rect key="frame" x="20" y="28" width="560" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="AuR-fS-ioc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="27"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0DE-cl-QeK" secondAttribute="bottom" id="4Wt-1e-vOb"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="D1D-VI-Jai" secondAttribute="trailing" id="72d-aw-kH2"/>
                             <constraint firstItem="0DE-cl-QeK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BJM-kf-O5V"/>
-                            <constraint firstItem="D1D-VI-Jai" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" id="F6D-tB-58Y"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="gFC-aT-0a3" secondAttribute="bottom" id="NLj-8A-rFb"/>
                             <constraint firstItem="gFC-aT-0a3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="RtG-ya-5cf"/>
-                            <constraint firstItem="D1D-VI-Jai" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="8" id="n7n-EA-BbV"/>
                             <constraint firstAttribute="trailing" secondItem="gFC-aT-0a3" secondAttribute="trailing" id="pZh-Vp-sr0"/>
                             <constraint firstAttribute="trailing" secondItem="0DE-cl-QeK" secondAttribute="trailing" id="t6H-cd-iBZ"/>
                             <constraint firstItem="gFC-aT-0a3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="uU0-HU-Jn4"/>
