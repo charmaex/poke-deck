@@ -8,20 +8,24 @@
 
 /* Begin PBXBuildFile section */
 		134D4E231C7E49B90082793A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D4E221C7E49B90082793A /* AppDelegate.swift */; };
-		134D4E251C7E49B90082793A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D4E241C7E49B90082793A /* ViewController.swift */; };
+		134D4E251C7E49B90082793A /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D4E241C7E49B90082793A /* MainVC.swift */; };
 		134D4E281C7E49B90082793A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 134D4E261C7E49B90082793A /* Main.storyboard */; };
-		134D4E2A1C7E49B90082793A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 134D4E291C7E49B90082793A /* Assets.xcassets */; };
 		134D4E2D1C7E49B90082793A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 134D4E2B1C7E49B90082793A /* LaunchScreen.storyboard */; };
+		137ABA261C7EF2960021AEE9 /* IntroImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137ABA251C7EF2960021AEE9 /* IntroImage.swift */; };
+		137ABA2F1C7F35CF0021AEE9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 137ABA2E1C7F35CF0021AEE9 /* Assets.xcassets */; };
+		137ABA311C7F39E70021AEE9 /* AppView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137ABA301C7F39E70021AEE9 /* AppView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		134D4E1F1C7E49B90082793A /* PokeDeck.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokeDeck.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		134D4E221C7E49B90082793A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		134D4E241C7E49B90082793A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		134D4E241C7E49B90082793A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
 		134D4E271C7E49B90082793A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		134D4E291C7E49B90082793A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		134D4E2C1C7E49B90082793A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		134D4E2E1C7E49B90082793A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		137ABA251C7EF2960021AEE9 /* IntroImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntroImage.swift; sourceTree = "<group>"; };
+		137ABA2E1C7F35CF0021AEE9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		137ABA301C7F39E70021AEE9 /* AppView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +58,40 @@
 		134D4E211C7E49B90082793A /* PokeDeck */ = {
 			isa = PBXGroup;
 			children = (
+				137ABA281C7EF2A80021AEE9 /* Model */,
+				137ABA271C7EF29B0021AEE9 /* View */,
+				137ABA291C7EF2AF0021AEE9 /* Controller */,
 				134D4E221C7E49B90082793A /* AppDelegate.swift */,
-				134D4E241C7E49B90082793A /* ViewController.swift */,
-				134D4E261C7E49B90082793A /* Main.storyboard */,
-				134D4E291C7E49B90082793A /* Assets.xcassets */,
-				134D4E2B1C7E49B90082793A /* LaunchScreen.storyboard */,
+				137ABA2E1C7F35CF0021AEE9 /* Assets.xcassets */,
 				134D4E2E1C7E49B90082793A /* Info.plist */,
 			);
 			path = PokeDeck;
+			sourceTree = "<group>";
+		};
+		137ABA271C7EF29B0021AEE9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				134D4E261C7E49B90082793A /* Main.storyboard */,
+				134D4E2B1C7E49B90082793A /* LaunchScreen.storyboard */,
+				137ABA251C7EF2960021AEE9 /* IntroImage.swift */,
+				137ABA301C7F39E70021AEE9 /* AppView.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		137ABA281C7EF2A80021AEE9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		137ABA291C7EF2AF0021AEE9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				134D4E241C7E49B90082793A /* MainVC.swift */,
+			);
+			name = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -124,7 +154,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				134D4E2D1C7E49B90082793A /* LaunchScreen.storyboard in Resources */,
-				134D4E2A1C7E49B90082793A /* Assets.xcassets in Resources */,
+				137ABA2F1C7F35CF0021AEE9 /* Assets.xcassets in Resources */,
 				134D4E281C7E49B90082793A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +166,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				134D4E251C7E49B90082793A /* ViewController.swift in Sources */,
+				137ABA311C7F39E70021AEE9 /* AppView.swift in Sources */,
+				134D4E251C7E49B90082793A /* MainVC.swift in Sources */,
+				137ABA261C7EF2960021AEE9 /* IntroImage.swift in Sources */,
 				134D4E231C7E49B90082793A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -254,6 +286,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.PokeDeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -265,6 +298,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = de.jandamm.PokeDeck;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -287,6 +321,7 @@
 				134D4E331C7E49B90082793A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
