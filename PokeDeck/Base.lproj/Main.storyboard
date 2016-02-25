@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--MainVC-->
@@ -26,7 +27,7 @@
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MCr-nk-amY">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
-                                        <color key="backgroundColor" red="1" green="0.084040851149999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.99607843137254903" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="bAU-F8-JIb"/>
                                         </constraints>
@@ -45,6 +46,64 @@
                                             <constraint firstAttribute="height" constant="48" id="qY3-Dp-GtM"/>
                                         </constraints>
                                     </imageView>
+                                    <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="M1o-90-bM8">
+                                        <rect key="frame" x="0.0" y="68" width="600" height="44"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="Nqa-qx-H0s"/>
+                                        </constraints>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </searchBar>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="k0g-eP-Xjm">
+                                        <rect key="frame" x="0.0" y="120" width="600" height="480"/>
+                                    </imageView>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="PsH-jp-MVG">
+                                        <rect key="frame" x="8" y="128" width="584" height="464"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="D5B-7G-4vp">
+                                            <size key="itemSize" width="100" height="100"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PokemonCell" id="00N-Wj-LMh" customClass="PokemonCell" customModule="PokeDeck" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="z6z-u1-0yz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ewq-8q-96L">
+                                                            <rect key="frame" x="0.0" y="75" width="100" height="25"/>
+                                                            <color key="backgroundColor" white="0.34534920302013422" alpha="0.5" colorSpace="calibratedWhite"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="ewq-8q-96L" firstAttribute="width" secondItem="00N-Wj-LMh" secondAttribute="width" id="9Mv-bv-hkx"/>
+                                                    <constraint firstAttribute="bottom" secondItem="ewq-8q-96L" secondAttribute="bottom" id="Gw6-1h-Gxs"/>
+                                                    <constraint firstItem="ewq-8q-96L" firstAttribute="centerX" secondItem="00N-Wj-LMh" secondAttribute="centerX" id="LX5-jO-XQi"/>
+                                                    <constraint firstItem="z6z-u1-0yz" firstAttribute="height" secondItem="00N-Wj-LMh" secondAttribute="height" id="Nkt-5h-UiG"/>
+                                                    <constraint firstItem="ewq-8q-96L" firstAttribute="height" secondItem="00N-Wj-LMh" secondAttribute="height" multiplier="0.25" id="bq4-Or-DnA"/>
+                                                    <constraint firstItem="z6z-u1-0yz" firstAttribute="width" secondItem="00N-Wj-LMh" secondAttribute="width" id="iET-sz-gcP"/>
+                                                    <constraint firstItem="z6z-u1-0yz" firstAttribute="centerY" secondItem="00N-Wj-LMh" secondAttribute="centerY" id="iy4-jq-LOb"/>
+                                                    <constraint firstItem="z6z-u1-0yz" firstAttribute="centerX" secondItem="00N-Wj-LMh" secondAttribute="centerX" id="vPY-cC-UqH"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="imgView" destination="z6z-u1-0yz" id="eeJ-QV-nAm"/>
+                                                    <outlet property="nameLbL" destination="ewq-8q-96L" id="txd-fh-mR1"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                    </collectionView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -52,10 +111,21 @@
                                     <constraint firstItem="hzq-NG-P2J" firstAttribute="centerY" secondItem="ZIg-Tj-wq8" secondAttribute="centerY" id="26p-A1-Mzy"/>
                                     <constraint firstAttribute="trailing" secondItem="ZIg-Tj-wq8" secondAttribute="trailing" id="5tN-v3-URX"/>
                                     <constraint firstItem="MCr-nk-amY" firstAttribute="top" secondItem="59D-Hs-2iL" secondAttribute="top" id="9yd-Iu-EFV"/>
+                                    <constraint firstAttribute="bottom" secondItem="k0g-eP-Xjm" secondAttribute="bottom" id="ADX-pz-zpY"/>
+                                    <constraint firstAttribute="trailing" secondItem="M1o-90-bM8" secondAttribute="trailing" id="AIH-bR-TXY"/>
+                                    <constraint firstItem="PsH-jp-MVG" firstAttribute="height" secondItem="k0g-eP-Xjm" secondAttribute="height" constant="-16" id="FW6-dC-aVS"/>
+                                    <constraint firstItem="M1o-90-bM8" firstAttribute="top" secondItem="hzq-NG-P2J" secondAttribute="bottom" id="HUu-X1-qYQ"/>
                                     <constraint firstItem="MCr-nk-amY" firstAttribute="leading" secondItem="59D-Hs-2iL" secondAttribute="leading" id="Iq8-xu-lzh"/>
+                                    <constraint firstItem="M1o-90-bM8" firstAttribute="leading" secondItem="59D-Hs-2iL" secondAttribute="leading" id="LOZ-7n-Cz5"/>
                                     <constraint firstAttribute="trailing" secondItem="MCr-nk-amY" secondAttribute="trailing" id="MCY-Ho-ST4"/>
+                                    <constraint firstAttribute="trailing" secondItem="PsH-jp-MVG" secondAttribute="trailing" constant="8" id="OCR-JB-hLT"/>
+                                    <constraint firstItem="k0g-eP-Xjm" firstAttribute="leading" secondItem="59D-Hs-2iL" secondAttribute="leading" id="ONB-o2-OHG"/>
+                                    <constraint firstAttribute="bottom" secondItem="PsH-jp-MVG" secondAttribute="bottom" constant="8" id="PQG-L9-HMN"/>
+                                    <constraint firstItem="k0g-eP-Xjm" firstAttribute="top" secondItem="M1o-90-bM8" secondAttribute="bottom" constant="8" id="c0B-7G-vOW"/>
                                     <constraint firstItem="hzq-NG-P2J" firstAttribute="centerX" secondItem="ZIg-Tj-wq8" secondAttribute="centerX" id="f1x-bw-qWP"/>
                                     <constraint firstItem="ZIg-Tj-wq8" firstAttribute="leading" secondItem="59D-Hs-2iL" secondAttribute="leading" id="jLI-bG-ZvM"/>
+                                    <constraint firstAttribute="trailing" secondItem="k0g-eP-Xjm" secondAttribute="trailing" id="ktc-Uo-IcG"/>
+                                    <constraint firstItem="PsH-jp-MVG" firstAttribute="leading" secondItem="59D-Hs-2iL" secondAttribute="leading" constant="8" id="nyX-Cl-4f3"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -73,6 +143,7 @@
                     </view>
                     <connections>
                         <outlet property="appView" destination="59D-Hs-2iL" id="CYl-bH-1Pa"/>
+                        <outlet property="collView" destination="PsH-jp-MVG" id="7U8-A3-7rg"/>
                     </connections>
                 </viewController>
             </objects>
@@ -80,7 +151,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Intro0" width="160" height="240"/>
-        <image name="PokeBallClip" width="24" height="24"/>
+        <image name="Intro0" width="320" height="480"/>
+        <image name="PokeBallClip" width="48" height="48"/>
+        <image name="bg" width="1920" height="1200"/>
     </resources>
 </document>
