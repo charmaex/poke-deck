@@ -13,12 +13,8 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     @IBOutlet weak var appView: AppView!
     @IBOutlet weak var collView: UICollectionView!
     
-    var test = [Pokemon]()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        test.append(Pokemon(name: "Bisasam", id: 1))
         
         collView.dataSource = self
         collView.delegate = self
@@ -36,12 +32,12 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return test.count
+        return PokemonList.inst.dataList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        cell.initializeCell(test[0])
+        cell.initializeCell(PokemonList.inst.dataList[indexPath.row])
         return cell
     }
 
