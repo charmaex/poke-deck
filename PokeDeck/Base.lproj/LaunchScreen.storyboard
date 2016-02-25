@@ -17,16 +17,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro0" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-aT-0a3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg" translatesAutoresizingMaskIntoConstraints="NO" id="gFC-aT-0a3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Intro0" translatesAutoresizingMaskIntoConstraints="NO" id="0DE-cl-QeK">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0DE-cl-QeK" secondAttribute="bottom" id="4Wt-1e-vOb"/>
+                            <constraint firstItem="0DE-cl-QeK" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="BJM-kf-O5V"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="gFC-aT-0a3" secondAttribute="bottom" id="NLj-8A-rFb"/>
                             <constraint firstItem="gFC-aT-0a3" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="RtG-ya-5cf"/>
                             <constraint firstAttribute="trailing" secondItem="gFC-aT-0a3" secondAttribute="trailing" id="pZh-Vp-sr0"/>
+                            <constraint firstAttribute="trailing" secondItem="0DE-cl-QeK" secondAttribute="trailing" id="t6H-cd-iBZ"/>
                             <constraint firstItem="gFC-aT-0a3" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="uU0-HU-Jn4"/>
+                            <constraint firstItem="0DE-cl-QeK" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="via-Bw-Kpo"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -37,5 +44,6 @@
     </scenes>
     <resources>
         <image name="Intro0" width="320" height="480"/>
+        <image name="bg" width="1920" height="1200"/>
     </resources>
 </document>

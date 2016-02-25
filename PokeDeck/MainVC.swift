@@ -32,12 +32,12 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return PokemonList.inst.dataList.count
+        return PokemonService.inst.dataList.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
-        cell.initializeCell(PokemonList.inst.dataList[indexPath.row])
+        cell.initializeCell(PokemonService.inst.dataList[indexPath.row])
         return cell
     }
 

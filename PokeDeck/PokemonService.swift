@@ -8,8 +8,8 @@
 
 import Foundation
 
-class PokemonList {
-    static let inst = PokemonList()
+class PokemonService {
+    static let inst = PokemonService()
     
     private var _dataList = [Pokemon]()
     
