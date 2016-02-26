@@ -68,7 +68,15 @@ class PressImage: UIImageView {
         
         image = UIImage(named: DEFAULT_IMG_NAME)
         
-        AudioService.inst.toggleAudio()
+        guard let touch = touches.first else {
+            return
+        }
+        
+        let location = touch.locationInView(super.superview?.superview)
+        
+        if frame.contains(location) {
+            AudioService.inst.toggleAudio()
+        }
     }
     
     private func startTimer() {

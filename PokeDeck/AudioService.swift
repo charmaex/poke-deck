@@ -13,10 +13,9 @@ class AudioService {
     static let inst = AudioService()
     
     private var _audio: AVAudioPlayer!
-    private var _playingMusic = false
     
     var playingMusic: Bool {
-        return _playingMusic
+        return _audio.playing
     }
     
     init() {
@@ -24,7 +23,7 @@ class AudioService {
     }
     
     func toggleAudio() {
-        if _playingMusic {
+        if _audio.playing {
             stopAudio()
         } else {
             playAudio()
@@ -33,12 +32,10 @@ class AudioService {
     
     func playAudio() {
         _audio.play()
-        _playingMusic = true
     }
     
     func stopAudio() {
         _audio.stop()
-        _playingMusic = false
     }
     
     private func setDefaultAudio() {
