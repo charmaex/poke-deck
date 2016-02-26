@@ -14,6 +14,7 @@ class PokemonService {
     private var _dataList = [Pokemon]()
     private var _filteredList = [Pokemon]()
     private var _filter = false
+    private var _lastFilter = ""
     
     var dataList: [Pokemon] {
         return _filter ? _filteredList : _dataList
@@ -41,14 +42,22 @@ class PokemonService {
     }
     
     func updateFilter(filter: String?) {
+        let update = false == (filter == _lastFilter)
+        
         if let filter = filter where filter != "" {
             _filter = true
-            _filteredList = _dataList.filter( { $0.name.rangeOfString(filter.lowercaseString) != nil } )
+            _lastFilter = filter
+            if update {
+                _filteredList = _dataList.filter( { $0.name.rangeOfString(filter.lowercaseString) != nil } )
+            }
         } else {
             _filter = false
+            _lastFilter = ""
         }
 
-        NSNotificationCenter.defaultCenter().postNotificationName("reloadCollView", object: nil)
+        if update {
+            NSNotificationCenter.defaultCenter().postNotificationName("reloadCollView", object: nil)
+        }
     }
 
 }

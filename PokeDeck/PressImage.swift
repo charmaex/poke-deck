@@ -36,7 +36,9 @@ class PressImage: UIImageView {
         animationRepeatCount = -1
         animationDuration = 1.2
         
-        startTimer()
+        if DataService.inst.animateMusic {
+            self.startTimer()
+        }
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
