@@ -25,7 +25,6 @@ class DataService {
         load()
         if _opened <= ANIMATE_UNTIL + 1 {
             save()
-            print("hh2")
         }
     }
     
