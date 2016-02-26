@@ -12,9 +12,11 @@ class PokemonService {
     static let inst = PokemonService()
     
     private var _dataList = [Pokemon]()
+    private var _filteredList = [Pokemon]()
+    private var _filter = false
     
     var dataList: [Pokemon] {
-        return _dataList
+        return _filter ? _filteredList : _dataList
     }
     
     init() {
@@ -33,10 +35,20 @@ class PokemonService {
                 _dataList.append(pokemon)
             }
             
-            
         } catch let err as NSError {
             print(err.debugDescription)
         }
+    }
+    
+    func updateFilter(filter: String?) {
+        if let filter = filter where filter != "" {
+            _filter = true
+            _filteredList = _dataList.filter( { $0.name.rangeOfString(filter.lowercaseString) != nil } )
+        } else {
+            _filter = false
+        }
+
+        NSNotificationCenter.defaultCenter().postNotificationName("reloadCollView", object: nil)
     }
 
 }

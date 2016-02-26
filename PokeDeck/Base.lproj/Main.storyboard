@@ -150,6 +150,7 @@
                     <connections>
                         <outlet property="appView" destination="59D-Hs-2iL" id="CYl-bH-1Pa"/>
                         <outlet property="collView" destination="PsH-jp-MVG" id="7U8-A3-7rg"/>
+                        <outlet property="searchBar" destination="M1o-90-bM8" id="dWH-dT-oJY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

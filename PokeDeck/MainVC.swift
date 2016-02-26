@@ -8,19 +8,26 @@
 
 import UIKit
 
-class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
 
     @IBOutlet weak var appView: AppView!
     @IBOutlet weak var collView: UICollectionView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collView.dataSource = self
         collView.delegate = self
+        searchBar.delegate = self
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showApp:", name: "introDone", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: "reloadCollView", object: nil)
 
+    }
+    
+    func reloadData() {
+        collView.reloadData()
     }
     
     func showApp(notif: NSNotification) {
@@ -39,6 +46,10 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         let cell = collView.dequeueReusableCellWithReuseIdentifier("PokemonCell", forIndexPath: indexPath) as! PokemonCell
         cell.initializeCell(PokemonService.inst.dataList[indexPath.row])
         return cell
+    }
+    
+    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        PokemonService.inst.updateFilter(searchBar.text)
     }
 
 }
