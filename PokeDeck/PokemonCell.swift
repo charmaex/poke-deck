@@ -23,7 +23,7 @@ class PokemonCell: UICollectionViewCell {
     func initializeCell(pokemon: Pokemon) {
         _pokemon = pokemon
         
-        nameLbL.text = pokemon.name.uppercaseString
+        nameLbL.text = pokemon.name.capitalizedString
         imgView.image = pokemon.image
     }
 
