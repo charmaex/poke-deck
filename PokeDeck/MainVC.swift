@@ -21,6 +21,8 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         collView.delegate = self
         searchBar.delegate = self
         
+        searchBar.returnKeyType = .Done
+        
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "showApp:", name: "introDone", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "reloadData", name: "reloadCollView", object: nil)
 
@@ -48,8 +50,16 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
+    func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         PokemonService.inst.updateFilter(searchBar.text)
+        
+        if searchBar.text == nil || searchBar.text == "" {
+            view.endEditing(true)
+        }
     }
 
 }
