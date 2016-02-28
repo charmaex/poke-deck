@@ -77,11 +77,17 @@ class Pokemon {
         let url = NSURL(string: "\(API_BASE_URL)/\(API_POKE_URL)/\(_id)/")!
         
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
-            guard let result = response.result.value else {
+            guard let result = response.result.value as? [String: AnyObject] else {
                 return
             }
             
-            print(result)
+            if let weight = result["weight"] as? Int {
+                self._weight = "\(weight)"
+            }
+            
+            
+            completed()
         }
+        
     }
 }

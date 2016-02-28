@@ -37,16 +37,20 @@ class DetailVC: UIViewController {
         evoImg.image = pokemon.image
         
         pokemon.downloadData { () -> () in
-            self.bioLbl.text = self.pokemon.bio
-            self.typeLbl.text = self.pokemon.type
-            self.defenseLbl.text = self.pokemon.defense
-            self.heightLbl.text = self.pokemon.height
-            self.attackLbl.text = self.pokemon.attack
-            self.weightLbl.text = self.pokemon.weight
-            self.evoLbl.text = self.pokemon.evolution
-            self.evoNextImg.image = self.pokemon.evoImage
+            self.updatedData()
         }
         
+    }
+    
+    func updatedData() {
+        bioLbl.text = pokemon.bio
+        typeLbl.text = pokemon.type
+        defenseLbl.text = pokemon.defense
+        heightLbl.text = pokemon.height
+        attackLbl.text = pokemon.attack
+        weightLbl.text = pokemon.weight
+        evoLbl.text = pokemon.evolution
+        evoNextImg.image = pokemon.evoImage
     }
 
 }
