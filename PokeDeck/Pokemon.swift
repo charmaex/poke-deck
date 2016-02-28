@@ -28,8 +28,8 @@ class Pokemon {
         return _name
     }
     
-    var id: Int {
-        return _id
+    var id: String {
+        return "\(_id)"
     }
     
     var bio: String {
@@ -83,6 +83,10 @@ class Pokemon {
             
             if let weight = result["weight"] as? Int {
                 self._weight = "\(weight)"
+            }
+            
+            if let height = result["height"] as? Int {
+                self._height = "\(height)"
             }
             
             

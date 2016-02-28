@@ -33,6 +33,7 @@ class DetailVC: UIViewController {
         backPokeBall.delegate = self
         
         nameLbl.text = pokemon.name.capitalizedString
+        idLbl.text = pokemon.id
         mainImg.image = pokemon.image
         evoImg.image = pokemon.image
         
