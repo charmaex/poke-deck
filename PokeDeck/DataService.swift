@@ -12,9 +12,9 @@ class DataService {
     static let inst = DataService()
     
     private var _opened: Int!
-    private let ANIMATE_UNTIL = 3
+    private let ANIMATE_UNTIL = 5
     
-    var animateMusic: Bool {
+    var animatePokeBall: Bool {
         guard let opened = _opened else {
             return true
         }

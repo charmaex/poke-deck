@@ -50,6 +50,13 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+
+        let pokemon = PokemonService.inst.dataList[indexPath.row]
+        
+        performSegueWithIdentifier("DetailVC", sender: pokemon)
+    }
+    
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         view.endEditing(true)
     }
@@ -58,7 +65,17 @@ class MainVC: UIViewController, UICollectionViewDataSource, UICollectionViewDele
         PokemonService.inst.updateFilter(searchBar.text)
         
         if searchBar.text == nil || searchBar.text == "" {
-            view.endEditing(true)
+            view.endEditing(false)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "DetailVC" {
+            guard let vc = segue.destinationViewController as? DetailVC, let pokemon = sender as? Pokemon else {
+                return
+            }
+            
+            vc.pokemon = pokemon
         }
     }
 

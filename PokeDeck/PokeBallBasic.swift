@@ -8,11 +8,16 @@
 
 import UIKit
 
-class PressImage: UIImageView {
+class PokeBallBasic: UIImageView {
 
     private var _timer: NSTimer!
     private var _originalPosition: CGPoint!
     private var _originalFrame: CGRect!
+    
+    private var _tapSuccessful = false
+    var tapSuccessful: Bool {
+        return _tapSuccessful
+    }
     
     private let DEFAULT_IMG_NAME = "PokeBall3"
     private let TIMER_INTERVAL: NSTimeInterval = 15
@@ -36,8 +41,8 @@ class PressImage: UIImageView {
         animationRepeatCount = -1
         animationDuration = 1.2
         
-        if DataService.inst.animateMusic {
-            self.startTimer()
+        if DataService.inst.animatePokeBall {
+            startTimer()
         }
     }
     
@@ -55,12 +60,6 @@ class PressImage: UIImageView {
         
         stopAnimating()
         
-        if AudioService.inst.playingMusic {
-            image = UIImage(named: "PokeBallAudioOff")
-        } else {
-            image = UIImage(named: "PokeBallAudioOn")
-        }
-        
         cancelTimer()
     }
     
@@ -76,12 +75,10 @@ class PressImage: UIImageView {
         
         let location = touch.locationInView(super.superview?.superview)
         
-        if frame.contains(location) {
-            AudioService.inst.toggleAudio()
-        }
+        _tapSuccessful = frame.contains(location)
     }
     
-    private func startTimer() {
+    func startTimer() {
         _timer = NSTimer.scheduledTimerWithTimeInterval(TIMER_INTERVAL, target: self, selector: "startAnimating", userInfo: nil, repeats: false)
     }
     
