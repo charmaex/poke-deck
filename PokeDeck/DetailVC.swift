@@ -13,9 +13,6 @@ class DetailVC: UIViewController {
     var pokemon: Pokemon!
     
     @IBOutlet weak var backPokeBall: PokeBallBack!
-    @IBOutlet weak var topView: UIView!
-    @IBOutlet weak var bottomView: UIView!
-    @IBOutlet weak var titleLbl: UILabel!
     
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
@@ -34,6 +31,15 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
 
         backPokeBall.delegate = self
+        
+        nameLbl.text = pokemon.name.capitalizedString
+        mainImg.image = pokemon.image
+        evoImg.image = pokemon.image
+        
+        pokemon.downloadData { () -> () in
+            //set data
+        }
+        
     }
 
 }

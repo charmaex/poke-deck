@@ -14,6 +14,14 @@ class Pokemon {
     private var _name: String
     private var _id: Int
     
+    private var _bio: String!
+    private var _defense: String!
+    private var _type: String!
+    private var _height: String!
+    private var _weight: String!
+    private var _baseAttack: String!
+    private var _evoLabel: String!
+    
     var name: String {
         return _name
     }
@@ -29,5 +37,9 @@ class Pokemon {
     init(name: String, id: Int) {
         _name = name
         _id = id
+    }
+    
+    func downloadData(completed: DownloadCompleted) {
+        
     }
 }
