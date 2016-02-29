@@ -67,8 +67,6 @@ class PokeBallBasic: UIImageView {
         frame = _originalFrame
         center = _originalPosition
         
-        image = UIImage(named: DEFAULT_IMG_NAME)
-        
         guard let touch = touches.first else {
             return
         }
@@ -76,6 +74,13 @@ class PokeBallBasic: UIImageView {
         let location = touch.locationInView(super.superview?.superview)
         
         _tapSuccessful = frame.contains(location)
+        
+        let time: Double = _tapSuccessful ? 1 : 0
+        
+        let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.image = UIImage(named: self.DEFAULT_IMG_NAME)
+        })
     }
     
     func startTimer() {

@@ -38,7 +38,7 @@ class Pokemon {
     }
     
     var bio: String {
-        return _bio == nil ? "" : _bio
+        return _bio == nil ? "" : _bio.stringByReplacingOccurrencesOfString("POKMON", withString: "Pokemon")
     }
     
     var defense: String {
