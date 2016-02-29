@@ -27,7 +27,7 @@ class Pokemon {
     private var _evoId: Int!
     
     var name: String {
-        return _name
+        return _name.capitalizedString
     }
     
     var id: String {
@@ -43,7 +43,7 @@ class Pokemon {
     }
     
     var type: String {
-        return _type == nil ? "" : _type
+        return _type == nil ? "" : _type.capitalizedString
     }
     
     var height: String {
@@ -87,8 +87,6 @@ class Pokemon {
                 return completed()
             }
             
-            self._downloaded = true
-            
             if let weight = result["weight"] as? Int {
                 self._weight = "\(weight)"
             }
@@ -97,8 +95,44 @@ class Pokemon {
                 self._height = "\(height)"
             }
             
+            if let stats = result["stats"] as? [Dictionary<String, AnyObject>] {
+                for statDict in stats {
+                    guard let stat = statDict["stat"] as? [String: String] else {
+                        continue
+                    }
+                    guard let statName = stat["name"] where statName == "defense" || statName == "attack" else {
+                        continue
+                    }
+                    guard let value = statDict["base_stat"] as? Int else {
+                        continue
+                    }
+                    
+                    if statName == "attack" {
+                        self._attack = "\(value)"
+                    } else if statName == "defense" {
+                        self._defense = "\(value)"
+                    }
+                }
+            }
+            
+            if let types = result["types"] as? [Dictionary<String, AnyObject>] where types.count > 0 {
+                var typeStr = ""
+                for (i, type) in types.enumerate() {
+                    guard let typeDict = type["type"] as? [String: String] else {
+                        continue
+                    }
+                    guard let name = typeDict["name"] else {
+                        continue
+                    }
+                    
+                    typeStr += i > 0 ? " / " : ""
+                    typeStr += name
+                }
+                self._type = typeStr
+            }
             
             
+            self._downloaded = true
             completed()
         }
         

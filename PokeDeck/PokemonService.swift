@@ -48,7 +48,7 @@ class PokemonService {
             _filter = true
             _lastFilter = filter
             if update {
-                _filteredList = _dataList.filter( { $0.name.rangeOfString(filter.lowercaseString) != nil } )
+                _filteredList = _dataList.filter( { $0.name.lowercaseString.rangeOfString(filter.lowercaseString) != nil } )
             }
         } else {
             _filter = false
