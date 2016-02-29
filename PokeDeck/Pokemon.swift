@@ -15,6 +15,8 @@ class Pokemon {
     private var _name: String
     private var _id: Int
     
+    private var _downloaded = false
+    
     private var _bio: String!
     private var _defense: String!
     private var _type: String!
@@ -74,12 +76,18 @@ class Pokemon {
     }
     
     func downloadData(completed: DownloadCompleted) {
+        guard !_downloaded else {
+            return completed()
+        }
+        
         let url = NSURL(string: "\(API_BASE_URL)/\(API_POKE_URL)/\(_id)/")!
         
         Alamofire.request(.GET, url).responseJSON { (response: Response<AnyObject, NSError>) -> Void in
             guard let result = response.result.value as? [String: AnyObject] else {
-                return
+                return completed()
             }
+            
+            self._downloaded = true
             
             if let weight = result["weight"] as? Int {
                 self._weight = "\(weight)"
@@ -88,6 +96,7 @@ class Pokemon {
             if let height = result["height"] as? Int {
                 self._height = "\(height)"
             }
+            
             
             
             completed()
