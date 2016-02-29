@@ -15,6 +15,10 @@ class DetailVC: UIViewController {
     @IBOutlet weak var backPokeBall: PokeBallBack!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var topViewConstraint: NSLayoutConstraint!
+    var topViewNewConstraint: NSLayoutConstraint!
+    @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
+    var bottomViewNewConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var bioAbilSeg: UISegmentedControl!
     
@@ -30,8 +34,6 @@ class DetailVC: UIViewController {
     @IBOutlet weak var evoLbl: UILabel!
     @IBOutlet weak var evoImg: UIImageView!
     @IBOutlet weak var evoNextImg: UIImageView!
-    
-    var topCenter: CGPoint?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,34 +66,27 @@ class DetailVC: UIViewController {
     }
     
     func openAnimation() {
-        let time: Double = 1
+        let time: Double = 0.5
         
-        topCenter = CGPointMake(topView.center.x, 60 - topView.bounds.height / 2)
-
+        let topCenter = CGPointMake(topView.center.x, 60 - topView.bounds.height / 2)
+        let bottomCenter = CGPointMake(bottomView.center.x, (view.bounds.height - 28) + topView.bounds.height / 2)
+        let pbCenter = CGPointMake(backPokeBall.center.x, (view.bounds.height - (48 + 4)) + backPokeBall.bounds.height / 2)
         
-        topView.move(topCenter!, time: time)
-//        bottomView.move(view.bounds.height - 28, time: time)
-//        backPokeBall.move(view.bounds.height - (48 + 4) , time: time)
+        topView.move(topCenter, time: time)
+        bottomView.move(bottomCenter, time: time)
+        backPokeBall.move(pbCenter , time: time)
+        
+        topViewNewConstraint = NSLayoutConstraint(item: self.topView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 60)
+        bottomViewNewConstraint = NSLayoutConstraint(item: self.bottomView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 28)
         
         let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {
             self.titleLbl.fadeIn(time)
+            self.topViewConstraint.active = false
+            self.bottomViewConstraint.active = false
+            self.topView.addConstraint(self.topViewNewConstraint)
+            self.bottomView.addConstraint(self.bottomViewNewConstraint)
         })
-    }
-    
-    func closeAnimation(andClose close: Bool) {
-//        topView.move()
-//        bottomView.move()
-        if close {
-            dismissViewControllerAnimated(false, completion: nil)
-        }
-    }
-    
-    func setViews() {
-        if let center = topCenter {
-            print(center.y)
-            topView.center = center
-        }
     }
     
     func updatedData() {
