@@ -13,6 +13,7 @@ class DetailVC: UIViewController {
     var pokemon: Pokemon!
     
     @IBOutlet weak var backPokeBall: PokeBallBack!
+    @IBOutlet weak var bioAbilSeg: UISegmentedControl!
     
     @IBOutlet weak var mainImg: UIImageView!
     @IBOutlet weak var nameLbl: UILabel!
@@ -36,6 +37,7 @@ class DetailVC: UIViewController {
         idLbl.text = pokemon.id
         mainImg.image = pokemon.image
         evoImg.image = pokemon.image
+        evoNextImg.hidden = true
         
         pokemon.downloadData { () -> () in
             self.updatedData()
@@ -44,14 +46,30 @@ class DetailVC: UIViewController {
     }
     
     func updatedData() {
-        bioLbl.text = pokemon.bio
+        updateBioAbil()
         typeLbl.text = pokemon.type
         defenseLbl.text = pokemon.defense
         heightLbl.text = pokemon.height
         attackLbl.text = pokemon.attack
         weightLbl.text = pokemon.weight
         evoLbl.text = pokemon.evolution
-        evoNextImg.image = pokemon.evoImage
+        if pokemon.evoImage != nil {
+            evoNextImg.image = pokemon.evoImage
+            evoNextImg.hidden = false
+        }
+    }
+    
+    func updateBioAbil() {
+        switch bioAbilSeg.selectedSegmentIndex {
+        case 0: bioLbl.text = pokemon.bio
+        case 1: bioLbl.text = pokemon.abilities
+        case 2: bioLbl.text = pokemon.moves
+        default: bioLbl.text = ""
+        }
+    }
+    
+    @IBAction func bioAbilChanged(sender: AnyObject) {
+        updateBioAbil()
     }
 
 }
