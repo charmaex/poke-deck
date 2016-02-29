@@ -29,6 +29,7 @@
 		137C9E0C1C82F62500818516 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9E0B1C82F62500818516 /* DetailVC.swift */; };
 		137C9E0E1C830CBE00818516 /* PokeBallMusic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9E0D1C830CBE00818516 /* PokeBallMusic.swift */; };
 		137C9E101C830EAC00818516 /* PokeBallBack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137C9E0F1C830EAC00818516 /* PokeBallBack.swift */; };
+		13F983E21C84D9AD00203F9D /* ViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13F983E11C84D9AD00203F9D /* ViewExtensions.swift */; };
 		8DE3D2E69996AB4B975982CB /* Pods_PokeDeck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F03038E00A79311ABE294FC /* Pods_PokeDeck.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		137C9E0B1C82F62500818516 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		137C9E0D1C830CBE00818516 /* PokeBallMusic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeBallMusic.swift; sourceTree = "<group>"; };
 		137C9E0F1C830EAC00818516 /* PokeBallBack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PokeBallBack.swift; sourceTree = "<group>"; };
+		13F983E11C84D9AD00203F9D /* ViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewExtensions.swift; sourceTree = "<group>"; };
 		3828AB0E9F2A193C6BD47BE7 /* Pods-PokeDeck.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokeDeck.release.xcconfig"; path = "Pods/Target Support Files/Pods-PokeDeck/Pods-PokeDeck.release.xcconfig"; sourceTree = "<group>"; };
 		9F03038E00A79311ABE294FC /* Pods_PokeDeck.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokeDeck.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -149,6 +151,7 @@
 				130F77D71C7FA2E4009CC63B /* PokeBallBasic.swift */,
 				137C9E0D1C830CBE00818516 /* PokeBallMusic.swift */,
 				137C9E0F1C830EAC00818516 /* PokeBallBack.swift */,
+				13F983E11C84D9AD00203F9D /* ViewExtensions.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -328,6 +331,7 @@
 				130F77CD1C7F923A009CC63B /* CsvParser.swift in Sources */,
 				130F77D81C7FA2E4009CC63B /* PokeBallBasic.swift in Sources */,
 				137ABA261C7EF2960021AEE9 /* IntroImage.swift in Sources */,
+				13F983E21C84D9AD00203F9D /* ViewExtensions.swift in Sources */,
 				134D4E231C7E49B90082793A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

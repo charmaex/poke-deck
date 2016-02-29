@@ -200,14 +200,11 @@ class Pokemon {
                             self._bio = description
                         }
                         
+                        self._downloaded = true
                         completed()
                     })
                 }
             }
-            
-            self._downloaded = true
-            completed()
         }
-        
     }
 }

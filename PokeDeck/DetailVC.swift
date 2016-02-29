@@ -13,6 +13,9 @@ class DetailVC: UIViewController {
     var pokemon: Pokemon!
     
     @IBOutlet weak var backPokeBall: PokeBallBack!
+    @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var bottomView: UIView!
+    @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var bioAbilSeg: UISegmentedControl!
     
     @IBOutlet weak var mainImg: UIImageView!
@@ -28,11 +31,27 @@ class DetailVC: UIViewController {
     @IBOutlet weak var evoImg: UIImageView!
     @IBOutlet weak var evoNextImg: UIImageView!
     
+    var topCenter: CGPoint?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         backPokeBall.delegate = self
+        titleLbl.alpha = 0
         
+        initializeView()
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.01 * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.openAnimation()
+        })
+    }
+    
+    func initializeView() {
         nameLbl.text = pokemon.name
         idLbl.text = pokemon.id
         mainImg.image = pokemon.image
@@ -42,7 +61,37 @@ class DetailVC: UIViewController {
         pokemon.downloadData { () -> () in
             self.updatedData()
         }
+    }
+    
+    func openAnimation() {
+        let time: Double = 1
         
+        topCenter = CGPointMake(topView.center.x, 60 - topView.bounds.height / 2)
+
+        
+        topView.move(topCenter!, time: time)
+//        bottomView.move(view.bounds.height - 28, time: time)
+//        backPokeBall.move(view.bounds.height - (48 + 4) , time: time)
+        
+        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
+        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+            self.titleLbl.fadeIn(time)
+        })
+    }
+    
+    func closeAnimation(andClose close: Bool) {
+//        topView.move()
+//        bottomView.move()
+        if close {
+            dismissViewControllerAnimated(false, completion: nil)
+        }
+    }
+    
+    func setViews() {
+        if let center = topCenter {
+            print(center.y)
+            topView.center = center
+        }
     }
     
     func updatedData() {
