@@ -11,12 +11,6 @@ import UIKit
 
 extension UIView {
     
-    func move(newCenter: CGPoint, time: Double) {
-        UIView.animateWithDuration(time) { () -> Void in
-            self.center = newCenter
-        }
-    }
-    
     func fadeIn(time: Double) {
         UIView.animateWithDuration(time) { () -> Void in
             self.alpha = 1

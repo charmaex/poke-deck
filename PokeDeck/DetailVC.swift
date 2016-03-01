@@ -12,13 +12,13 @@ class DetailVC: UIViewController {
 
     var pokemon: Pokemon!
     
+    private var _gotData = false
+    
     @IBOutlet weak var backPokeBall: PokeBallBack!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var topViewConstraint: NSLayoutConstraint!
-    var topViewNewConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomViewConstraint: NSLayoutConstraint!
-    var bottomViewNewConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleLbl: UILabel!
     @IBOutlet weak var bioAbilSeg: UISegmentedControl!
     
@@ -40,6 +40,8 @@ class DetailVC: UIViewController {
 
         backPokeBall.delegate = self
         titleLbl.alpha = 0
+        topViewConstraint.constant = view.bounds.height / 2
+        bottomViewConstraint.constant = view.bounds.height / 2
         
         initializeView()
     }
@@ -47,10 +49,7 @@ class DetailVC: UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.01 * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.openAnimation()
-        })
+        openAnimation()
     }
     
     func initializeView() {
@@ -67,29 +66,37 @@ class DetailVC: UIViewController {
     
     func openAnimation() {
         let time: Double = 0.5
+        let delay: Double = _gotData ? 0.1 : 0.8
         
-        let topCenter = CGPointMake(topView.center.x, 60 - topView.bounds.height / 2)
-        let bottomCenter = CGPointMake(bottomView.center.x, (view.bounds.height - 28) + topView.bounds.height / 2)
-        let pbCenter = CGPointMake(backPokeBall.center.x, (view.bounds.height - (48 + 4)) + backPokeBall.bounds.height / 2)
+        topViewConstraint.constant = 60
+        bottomViewConstraint.constant = 28
         
-        topView.move(topCenter, time: time)
-        bottomView.move(bottomCenter, time: time)
-        backPokeBall.move(pbCenter , time: time)
+        UIView.animateWithDuration(time, delay: delay, options: [.CurveEaseOut], animations: { () -> Void in
+            self.view.layoutIfNeeded()
+            }) { (Bool) -> Void in
+                self.titleLbl.fadeIn(time)
+        }
+    }
+    
+    func closeAnimation() {
+        let time: Double = 0.3
+        let fadeOut: Double = 0.1
         
-        topViewNewConstraint = NSLayoutConstraint(item: self.topView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 60)
-        bottomViewNewConstraint = NSLayoutConstraint(item: self.bottomView, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1, constant: 28)
+        let constant = view.bounds.height / 2
+        topViewConstraint.constant = constant
+        bottomViewConstraint.constant = constant
         
-        let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
-        dispatch_after(dispatchTime, dispatch_get_main_queue(), {
-            self.titleLbl.fadeIn(time)
-            self.topViewConstraint.active = false
-            self.bottomViewConstraint.active = false
-            self.topView.addConstraint(self.topViewNewConstraint)
-            self.bottomView.addConstraint(self.bottomViewNewConstraint)
-        })
+        titleLbl.fadeOut(fadeOut)
+        
+        UIView.animateWithDuration(time, delay: fadeOut, options: [.CurveEaseOut], animations: { () -> Void in
+            self.view.layoutIfNeeded()
+            }) { (Bool) -> Void in
+                self.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func updatedData() {
+        _gotData = true
         updateBioAbil()
         typeLbl.text = pokemon.type
         defenseLbl.text = pokemon.defense

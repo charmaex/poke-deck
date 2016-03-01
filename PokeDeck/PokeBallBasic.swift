@@ -8,25 +8,17 @@
 
 import UIKit
 
-class PokeBallBasic: UIImageView {
+class PokeBallBasic: TappableImage {
 
     private var _timer: NSTimer!
-    private var _originalPosition: CGPoint!
-    private var _originalFrame: CGRect!
-    
-    private var _tapSuccessful = false
-    var tapSuccessful: Bool {
-        return _tapSuccessful
-    }
     
     private let DEFAULT_IMG_NAME = "PokeBall3"
     private let TIMER_INTERVAL: NSTimeInterval = 15
     
     override func awakeFromNib() {
-        userInteractionEnabled = true
+        super.awakeFromNib()
         
         var animImages = [UIImage]()
-        
         
         var x = [Int]()
         x += Array(3.stride(to: -1, by: -1))
@@ -47,16 +39,7 @@ class PokeBallBasic: UIImageView {
     }
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        _originalPosition = center
-        _originalFrame = frame
-        
-        let xRescale: CGFloat = 8
-        let yRescale: CGFloat = 8
-        
-        let x = _originalPosition.x - (bounds.height - xRescale) / 2
-        let y = _originalPosition.y - (bounds.width  - yRescale) / 2
-        let frameNew = CGRectMake(x, y, bounds.width - xRescale, bounds.height - yRescale)
-        frame = frameNew
+        super.touchesBegan(touches, withEvent: event)
         
         stopAnimating()
         
@@ -64,18 +47,9 @@ class PokeBallBasic: UIImageView {
     }
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        frame = _originalFrame
-        center = _originalPosition
+        super.touchesEnded(touches, withEvent: event)
         
-        guard let touch = touches.first else {
-            return
-        }
-        
-        let location = touch.locationInView(super.superview?.superview)
-        
-        _tapSuccessful = frame.contains(location)
-        
-        let time: Double = _tapSuccessful ? 1 : 0
+        let time: Double = tapSuccessful ? 1 : 0
         
         let dispatchTime = dispatch_time(DISPATCH_TIME_NOW, Int64(time * Double(NSEC_PER_SEC)))
         dispatch_after(dispatchTime, dispatch_get_main_queue(), {

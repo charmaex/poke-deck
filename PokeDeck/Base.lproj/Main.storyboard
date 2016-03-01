@@ -169,7 +169,7 @@
         <!--DetailVC-->
         <scene sceneID="bU9-8t-QWa">
             <objects>
-                <viewController id="kwN-kG-LHo" customClass="DetailVC" customModule="PokeDeck" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="crossDissolve" id="kwN-kG-LHo" customClass="DetailVC" customModule="PokeDeck" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qQR-Lz-bPr"/>
                         <viewControllerLayoutGuide type="bottom" id="6Q6-kc-U7H"/>
@@ -397,7 +397,7 @@
                                 <variation key="heightClass=compact" axis="horizontal"/>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QSa-Wz-DVL">
-                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="572" width="600" height="28"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="59O-xP-ryG">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="4"/>
@@ -409,23 +409,24 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="0lx-or-Jd6"/>
                                     <constraint firstItem="59O-xP-ryG" firstAttribute="top" secondItem="QSa-Wz-DVL" secondAttribute="top" id="7Mn-Yl-Zij"/>
                                     <constraint firstAttribute="trailing" secondItem="59O-xP-ryG" secondAttribute="trailing" id="9WC-g9-wBE"/>
                                     <constraint firstItem="59O-xP-ryG" firstAttribute="leading" secondItem="QSa-Wz-DVL" secondAttribute="leading" id="o9h-sV-l2q"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DPS-HC-wIs">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aEg-2e-6KO">
-                                        <rect key="frame" x="0.0" y="296" width="600" height="4"/>
+                                        <rect key="frame" x="0.0" y="56" width="600" height="4"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="4" id="WfZ-dy-Pe1"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PokeDeck" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7ng-yY-c5P">
-                                        <rect key="frame" x="8" y="259" width="584" height="37"/>
+                                        <rect key="frame" x="8" y="19" width="584" height="37"/>
                                         <fontDescription key="fontDescription" name="PokemonSolidNormal" family="Pokemon Solid" pointSize="26"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
@@ -437,12 +438,13 @@
                                     <constraint firstAttribute="bottom" secondItem="aEg-2e-6KO" secondAttribute="bottom" id="Cj2-zm-FCU"/>
                                     <constraint firstAttribute="trailing" secondItem="7ng-yY-c5P" secondAttribute="trailing" constant="8" id="Ml0-bl-hVP"/>
                                     <constraint firstAttribute="bottom" secondItem="7ng-yY-c5P" secondAttribute="bottom" constant="4" id="aX5-Wc-5n1"/>
+                                    <constraint firstAttribute="height" constant="60" id="fVz-xV-RsP"/>
                                     <constraint firstItem="aEg-2e-6KO" firstAttribute="leading" secondItem="DPS-HC-wIs" secondAttribute="leading" id="gNl-d4-hxT"/>
                                     <constraint firstItem="7ng-yY-c5P" firstAttribute="leading" secondItem="DPS-HC-wIs" secondAttribute="leading" constant="8" id="nXo-d7-7ve"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PokeBall3" translatesAutoresizingMaskIntoConstraints="NO" id="r6f-K8-ta6" customClass="PokeBallBack" customModule="PokeDeck" customModuleProvider="target">
-                                <rect key="frame" x="276" y="276" width="48" height="48"/>
+                                <rect key="frame" x="276" y="548" width="48" height="48"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="48" id="AcJ-mV-ScL"/>
                                     <constraint firstAttribute="width" constant="48" id="Vbn-6F-gLd"/>
@@ -451,7 +453,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DPS-HC-wIs" firstAttribute="height" secondItem="kdX-ZJ-wk6" secondAttribute="height" multiplier="0.5" id="0EC-a4-5MP"/>
                             <constraint firstItem="QSa-Wz-DVL" firstAttribute="leading" secondItem="kdX-ZJ-wk6" secondAttribute="leading" id="1JP-pP-dX6"/>
                             <constraint firstItem="uHK-YH-A72" firstAttribute="top" secondItem="qQR-Lz-bPr" secondAttribute="bottom" constant="48" id="4Wp-0J-Pnq">
                                 <variation key="heightClass=compact" constant="68"/>
@@ -460,7 +461,6 @@
                             <constraint firstItem="DPS-HC-wIs" firstAttribute="leading" secondItem="kdX-ZJ-wk6" secondAttribute="leading" id="UNH-sf-jWW"/>
                             <constraint firstAttribute="trailing" secondItem="QSa-Wz-DVL" secondAttribute="trailing" id="avS-Re-kGl"/>
                             <constraint firstItem="6Q6-kc-U7H" firstAttribute="top" secondItem="QSa-Wz-DVL" secondAttribute="bottom" id="dIN-eo-cpX"/>
-                            <constraint firstItem="QSa-Wz-DVL" firstAttribute="height" secondItem="kdX-ZJ-wk6" secondAttribute="height" multiplier="0.5" id="gAm-pi-uCv"/>
                             <constraint firstItem="DPS-HC-wIs" firstAttribute="top" secondItem="kdX-ZJ-wk6" secondAttribute="top" id="nA8-GD-tKO"/>
                             <constraint firstAttribute="trailing" secondItem="DPS-HC-wIs" secondAttribute="trailing" id="q55-uD-QxP"/>
                             <constraint firstItem="r6f-K8-ta6" firstAttribute="centerX" secondItem="kdX-ZJ-wk6" secondAttribute="centerX" id="rBB-QB-LtQ"/>
@@ -475,7 +475,7 @@
                         <outlet property="bioAbilSeg" destination="mdN-wA-aC6" id="JhB-8T-v5b"/>
                         <outlet property="bioLbl" destination="J00-zB-a3r" id="QvT-Hx-zww"/>
                         <outlet property="bottomView" destination="QSa-Wz-DVL" id="GQO-k0-JoN"/>
-                        <outlet property="bottomViewConstraint" destination="gAm-pi-uCv" id="umQ-OJ-SPY"/>
+                        <outlet property="bottomViewConstraint" destination="0lx-or-Jd6" id="gqb-QR-CUk"/>
                         <outlet property="defenseLbl" destination="3XX-r3-k5q" id="lcD-AG-EpO"/>
                         <outlet property="evoImg" destination="fc0-ds-KK3" id="HME-jj-LO6"/>
                         <outlet property="evoLbl" destination="BnI-ed-mQG" id="PqZ-gg-vfy"/>
@@ -486,7 +486,7 @@
                         <outlet property="nameLbl" destination="7Nm-ww-9WG" id="TdO-Fk-hrA"/>
                         <outlet property="titleLbl" destination="7ng-yY-c5P" id="E3n-O9-Wzd"/>
                         <outlet property="topView" destination="DPS-HC-wIs" id="duk-2v-L5q"/>
-                        <outlet property="topViewConstraint" destination="0EC-a4-5MP" id="hKh-v6-3Bo"/>
+                        <outlet property="topViewConstraint" destination="fVz-xV-RsP" id="rlg-UC-Hmb"/>
                         <outlet property="typeLbl" destination="XGg-TT-Jgk" id="vSk-7N-pYT"/>
                         <outlet property="weightLbl" destination="WtB-rl-HOO" id="EuO-tl-yF8"/>
                     </connections>

@@ -22,7 +22,7 @@ class PokeBallBack: PokeBallBasic {
                 return
             }
             
-            delegate.dismissViewControllerAnimated(true, completion: nil)
+            delegate.closeAnimation()
         }
     }
     
