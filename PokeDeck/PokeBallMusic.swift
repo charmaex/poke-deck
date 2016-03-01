@@ -21,11 +21,7 @@ class PokeBallMusic: PokeBallBasic {
         }
     }
     
-    override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
-        super.touchesEnded(touches, withEvent: event)
-        
-        if tapSuccessful {
-            AudioService.inst.toggleAudio()
-        }
+    override func tapped() {
+        AudioService.inst.toggleAudio()
     }
 }

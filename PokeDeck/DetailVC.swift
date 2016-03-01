@@ -31,12 +31,13 @@ class DetailVC: UIViewController {
     @IBOutlet weak var idLbl: UILabel!
     @IBOutlet weak var evoLbl: UILabel!
     @IBOutlet weak var evoImg: UIImageView!
-    @IBOutlet weak var evoNextImg: UIImageView!
+    @IBOutlet weak var evoNextImg: NextEvoImgView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         backPokeBall.delegate = self
+        evoNextImg.delegate = self
         
         titleLbl.alpha = 0
         topViewConstraint.constant = view.bounds.height / 2
@@ -76,7 +77,7 @@ class DetailVC: UIViewController {
         }
     }
     
-    func closeAnimation() {
+    func closeAnimation(completed: AfterAnimation) {
         let time: Double = 0.3
         let fadeOut: Double = 0.1
         
@@ -89,12 +90,12 @@ class DetailVC: UIViewController {
         UIView.animateWithDuration(time, delay: fadeOut, options: [.CurveEaseOut], animations: { () -> Void in
             self.view.layoutIfNeeded()
             }) { (Bool) -> Void in
-                self.dismissViewControllerAnimated(true, completion: nil)
+                completed()
         }
     }
     
     func updatedData() {
-        updateBioAbil()
+        updateBioAbilLbl()
         typeLbl.text = pokemon.type
         defenseLbl.text = pokemon.defense
         heightLbl.text = pokemon.height
@@ -107,7 +108,7 @@ class DetailVC: UIViewController {
         }
     }
     
-    func updateBioAbil() {
+    func updateBioAbilLbl() {
         switch bioAbilSeg.selectedSegmentIndex {
         case 0: bioLbl.text = pokemon.bio
         case 1: bioLbl.text = pokemon.abilities
@@ -116,8 +117,17 @@ class DetailVC: UIViewController {
         }
     }
     
+    func evoPokemon() {
+        let newPokeID = Int(pokemon.id)!
+        pokemon = PokemonService.inst.dataList[newPokeID]
+        
+        closeAnimation({
+            self.initializeView()
+        })
+    }
+    
     @IBAction func bioAbilChanged(sender: AnyObject) {
-        updateBioAbil()
+        updateBioAbilLbl()
     }
 
 }

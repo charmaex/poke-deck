@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 class TappableImage: UIImageView {
+    var delegate: UIViewController?
+    
     private var _originalPosition: CGPoint!
     private var _originalFrame: CGRect!
     
@@ -47,5 +49,13 @@ class TappableImage: UIImageView {
         let location = touch.locationInView(super.superview?.superview)
         
         _tapSuccessful = frame.contains(location)
+        
+        if tapSuccessful {
+            tapped()
+        }
+    }
+    
+    func tapped() {
+        
     }
 }
