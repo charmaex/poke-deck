@@ -12,8 +12,6 @@ class DetailVC: UIViewController {
 
     var pokemon: Pokemon!
     
-    private var _gotData = false
-    
     @IBOutlet weak var backPokeBall: PokeBallBack!
     @IBOutlet weak var topView: UIView!
     @IBOutlet weak var bottomView: UIView!
@@ -39,17 +37,12 @@ class DetailVC: UIViewController {
         super.viewDidLoad()
 
         backPokeBall.delegate = self
+        
         titleLbl.alpha = 0
         topViewConstraint.constant = view.bounds.height / 2
         bottomViewConstraint.constant = view.bounds.height / 2
         
         initializeView()
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        openAnimation()
     }
     
     func initializeView() {
@@ -61,12 +54,17 @@ class DetailVC: UIViewController {
         
         pokemon.downloadData { () -> () in
             self.updatedData()
+            
+            let dispatchTime: dispatch_time_t = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+            dispatch_after(dispatchTime, dispatch_get_main_queue(), {
+                self.openAnimation()
+            })
         }
     }
     
     func openAnimation() {
-        let time: Double = 0.5
-        let delay: Double = _gotData ? 0.1 : 0.8
+        let time: Double = 0.3
+        let delay: Double = 0.1
         
         topViewConstraint.constant = 60
         bottomViewConstraint.constant = 28
@@ -96,7 +94,6 @@ class DetailVC: UIViewController {
     }
     
     func updatedData() {
-        _gotData = true
         updateBioAbil()
         typeLbl.text = pokemon.type
         defenseLbl.text = pokemon.defense
