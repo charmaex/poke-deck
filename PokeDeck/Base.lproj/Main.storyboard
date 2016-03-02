@@ -159,7 +159,7 @@
                         <outlet property="appView" destination="59D-Hs-2iL" id="CYl-bH-1Pa"/>
                         <outlet property="collView" destination="PsH-jp-MVG" id="7U8-A3-7rg"/>
                         <outlet property="searchBar" destination="M1o-90-bM8" id="dWH-dT-oJY"/>
-                        <segue destination="kwN-kG-LHo" kind="show" identifier="DetailVC" animates="NO" id="ULc-L1-GK7"/>
+                        <segue destination="kwN-kG-LHo" kind="show" identifier="DetailVC" id="ULc-L1-GK7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
