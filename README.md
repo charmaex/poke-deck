@@ -7,7 +7,7 @@ PokeDeck is a free iOS universal App featuring the classic 718 Pokemons.
 
 ![PokeDeck Promo Image] (http://jandamm.de/wp-content/uploads/2016/03/PokeDeck_Mockup.png)
 
-###Features
+###Features:
 * Nice animations
 * Detail view showing stats and next evolution image
 * *Hidden* Pokemon background music
