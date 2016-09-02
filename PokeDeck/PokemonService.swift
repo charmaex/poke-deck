@@ -42,7 +42,7 @@ class PokemonService {
     }
     
     func updateFilter(filter: String?) {
-        let update = false == (filter == _lastFilter)
+        let update = filter != _lastFilter
         
         if let filter = filter where filter != "" {
             _filter = true
